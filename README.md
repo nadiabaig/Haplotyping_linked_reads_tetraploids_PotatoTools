@@ -22,9 +22,9 @@ This repository provides the bash script , I used for my 10x datasets to get the
   
 
 <!-- GETTING STARTED -->
-## Getting Started
+## :desktop_computer: Getting Started
 
-### Installation
+### :keyboard: Installation
 
 1. See Hap10 github or else do,
 
