@@ -67,7 +67,7 @@ for file in yourvcf.vcf; do
   done
 done
 ```
-### VCF and BAM file spliting per Chromosome per Genotype
+### VCF and BAM file spliting per Chromosome per Genotype + Hap10 pipeline
 
 ```sh
 #!/bin/bash
@@ -160,6 +160,62 @@ done
 + Note: Save the afforementioned script in a global.sh file and do qsub global.sh, it will generate 1 snp for each genotype and each script will run automatically
 
 ```
+### Stongly connected components extraction and haplotype assembly
+### I have divided the pipeline into 3 scripts as the script2 and current script requires more memory
+
+
+```sh
+!/bin/bash
+
+#PBS -l select=1:ncpus=1:mem=1G
+#PBS -l walltime=1:00:00
+#PBS -A  "PotatoTool-BI"
+
+module load Python/3.8.3 HTSlib/1.7 Java/1.8.0 gcc/4.8.1 bzip2/1.0.6
+module load bcftools/1.10.2
+module load Perl/5.32.1
+module load SamTools/1.6
+
+file=bams/Harpun
+cd /gpfs/project/baign/Project_2_population_structure/VCFS_22_april_2021/samtools/01_All_chrs_16_juli_2021/Hap10_analysis/$file
+p2="/gpfs/project/baign/Final_analysis_array/src/Hap10/utilities"
+
+javat2=/gpfs/project/baign/Project_2_population_structure/VCFS_22_april_2021/samtools/01_All_chrs_16_juli_2021/01_step1_processing/VariantCalling/All/final/step1_cleaning/merged_all/final_5_june/Hap10_analysis_15_june_2021/src/H-PoPG-master/H-PoPGv0.2.0.jar
+
+path=/gpfs/project/baign/Project_2_population_structure/VCFS_22_april_2021/samtools/01_All_chrs_16_juli_2021/Hap10_analysis/$file
+for x in {Chr01,Chr02,Chr03,Chr04,Chr05,Chr06,Chr07,Chr08,Chr09,Chr10,Chr11,Chr12,Chrun};
+do
+cd /gpfs/project/baign/Project_2_population_structure/VCFS_22_april_2021/samtools/01_All_chrs_16_juli_2021/Hap10_analysis/$file/$x
+
+echo "#!/bin/bash
+#PBS -l select=1:ncpus=2:mem=39G
+#PBS -l walltime=89:00:00
+#PBS -A "PotatoTool-BI"
+module load Python/3.8.3 HTSlib/1.7 Java/1.8.0 gcc/4.8.1 bzip2/1.0.6
+module load bcftools/1.10.2
+module load Perl/5.32.1
+module load SamTools/1.6
+cd /gpfs/project/baign/Project_2_population_structure/VCFS_22_april_2021/samtools/01_All_chrs_16_juli_2021/Hap10_analysis/$file/$x
+
+python3 $p2/extract_scc.py linked_fragment_file_sp.txt cc $path/$x/frag_cc
+
+wait
+
+ls frag_cc* > list.txt
+wait
+
+sort -V list.txt > out.txt
+wait
+
+java -jar $javat2 -p 4 -v $path/${x}.vcf -b $path/${x}.bam -f out.txt  -d phased_${x}_cc_allins_haps.txt
+" > /gpfs/project/baign/Project_2_population_structure/VCFS_22_april_2021/samtools/01_All_chrs_16_juli_2021/Hap10_analysis/$file/assembly.${x}.sh
+
+cd /gpfs/project/baign/Project_2_population_structure/VCFS_22_april_2021/samtools/01_All_chrs_16_juli_2021/Hap10_analysis/$file
+qsub assembly.${x}.sh
+done
+
+
+
 
 <!-- ROADMAP -->
 ## 🚧 Roadmap
