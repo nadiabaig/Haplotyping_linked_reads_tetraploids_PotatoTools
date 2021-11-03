@@ -158,8 +158,10 @@ done
 + Note: Save the afforementioned script in a global.sh file and do qsub global.sh, it will generate 1 script for each genotype and each script will run automatically
 ```
 ### Stongly connected components extraction and haplotype assembly
-### I have divided the pipeline into 3 scripts as the script2 and current script requires more memory
 
+```diff
+ ! I have divided the pipeline into 3 scripts as the script2 and current script requires more memory
+```
 
 ```sh
 !/bin/bash
