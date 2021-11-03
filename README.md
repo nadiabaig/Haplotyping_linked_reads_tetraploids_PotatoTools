@@ -21,7 +21,6 @@ This repository provides the bash script , I used for my 10x datasets to get the
 ```
   
 
-
 <!-- GETTING STARTED -->
 ## Getting Started
 
