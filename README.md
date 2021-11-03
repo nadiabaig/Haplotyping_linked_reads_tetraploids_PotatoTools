@@ -154,12 +154,14 @@ done
 ```
 
 ```diff
+- I skipped using loops inside the global script as it seemed slow to me and used & instead to execute multiple commands at once.
+- If you know a better option let me know
 + Note: Save the afforementioned script in a global.sh file and do qsub global.sh, it will generate 1 script for each genotype and each script will run automatically
 ```
 ### Stongly connected components extraction and haplotype assembly
 
 ```diff
- ! I have divided the pipeline into 3 scripts as the script2 and current script requires more memory
+ + I have divided the pipeline into 3 scripts as the script2 and current script requires more memory
 ```
 
 ```sh
