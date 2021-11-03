@@ -67,13 +67,99 @@ for file in yourvcf.vcf; do
   done
 done
 ```
+### VCF and BAM file spliting per Chromosome per Genotype
 
+```sh
+#!/bin/bash
+#PBS -l select=1:ncpus=1:mem=10G:arch=skylake
+#PBS -l walltime=10:00:00
+#PBS -A  "project"
+cd $PBS_O_WORKDIR
 
+##Path of tools in the project folder which aren't available on Hpc 
+ext_poly=/gpfs/--/src/extract_poly/build/extractHAIRS
+util=/gpfs/--/src/extract_poly/LinkFragments_brcd_based.py
+p2=/gpfs/--/src/Hap10/utilities
+path=/gpfs/--/Hap10_analysis  #path where I want to save results
 
+bam1=Chr01.bam bam2=Chr02.bam bam3=Chr03.bam 
+vcf1=Chr01.vcf vcf2=Chr02.vcf bam3=Chr03.vcf
+ 
+##create genotype folders
+mkdir BNA5 bintje BNA_3 Cara Celtane Charlte Cherie Colomba 
 
+wait
 
-qsub yourscript_name.sh
+for x in {BNA5,bintje,BNA_3,Cara,Celtane,Charlte,Cherie,Colomba};
+do
+cd /gpfs/project/--/Hap10_analysis
+echo "#!/bin/bash
+#PBS -l select=1:ncpus=2:mem=70G
+#PBS -l walltime=167:00:00
+#PBS -A "project"
+module load Python/3.8.3 HTSlib/1.7 Java/1.8.0 gcc/4.8.1 bzip2/1.0.6
+module load bcftools/1.10.2
+module load Perl/5.32.1
+module load SamTools/1.6
 
+cd /gpfs/project/--/Hap10_analysis/$x   
+
+##filtering VCF file and splitting it into individual Chromosome VCFs
+
+cat $path/07_new_formated.${x}.vcf | grep -v "1/1/1/1" | grep -v "0/0/0/0" > $path/$x/var_het.vcf   #This will generate filtered vcf and save it into respective genotype folder
+
+wait
+bgzip -c $path/$x/var_het.vcf > var_het.vcf.gz  #compress vcf
+wait
+tabix -f -p vcf var_het.vcf.gz  # index compressed vcf
+wait  #Note: for loop was slow,skipped loop here
+tabix  $path/$x/var_het.vcf.gz Chr01 > $path/$x/Chr01.vcf &
+tabix  $path/$x/var_het.vcf.gz Chr02 > $path/$x/Chr02.vcf &
+tabix  $path/$x/var_het.vcf.gz Chr03 > $path/$x/Chr03.vcf &
+
+wait
+##splitting bams
+samtools view  -hb $path/filtered_realigned_${x}_reads.bam Chr01 > $path/$x/Chr01.bam 
+samtools view  -hb $path/filtered_realigned_${x}_reads.bam Chr02 > $path/$x/Chr02.bam 
+samtools view  -hb $path/filtered_realigned_${x}_reads.bam Chr03 > $path/$x/Chr03.bam 
+wait
+mkdir Chr01 Chr02 Chr03 #will create subfolders inside each genotype
+wait
+
+##Now, we are ready to use Hap10 pipeline
+##Step1:extracting unlinked fragment files for each chromosome using BAM and VCF files
+
+$ext_poly --10X 1 --bam $bam1 --VCF $vcf1 --out $path/$x/Chr01/unlinked_fragment_file.txt &
+$ext_poly --10X 1 --bam $bam2 --VCF $vcf2 --out $path/$x/Chr02/unlinked_fragment_file.txt &
+$ext_poly --10X 1 --bam $bam3 --VCF $vcf3 --out $path/$x/Chr03/unlinked_fragment_file.txt &
+
+wait
+
+python3 $util $path/$x/Chr01/unlinked_fragment_file.txt $path/$x/Chr01/linked_fragment_file.txt &
+python3 $util $path/$x/Chr02/unlinked_fragment_file.txt $path/$x/Chr02/linked_fragment_file.txt &
+python3 $util $path/$x/Chr03/unlinked_fragment_file.txt $path/$x/Chr03/linked_fragment_file.txt &
+
+wait
+
+#Step2: Extracting the molecule-specific fragments in which m is the mean 10X molecule length (in Kb) which can be set as 50. (github Hap10)
+
+python3 $p2/splitter.py $path/$x/Chr01/linked_fragment_file.txt $vcf1 50 &
+python3 $p2/splitter.py $path/$x/Chr02/linked_fragment_file.txt $vcf2 50 &
+python3 $p2/splitter.py $path/$x/Chr03/linked_fragment_file.txt $vcf3 50 &
+
+" > /gpfs/--/Hap10_analysis/Hap10_fragments.${x}.sh
+
+cd /gpfs/--/Hap10_analysis
+qsub Hap10_fragments.${x}.sh
+
+done
+
+```
+
+```diff
++ Note: Save the afforementioned script in a global.sh file and do qsub global.sh, it will generate 1 snp for each genotype and each script will run automatically
+
+```
 
 <!-- ROADMAP -->
 ## 🚧 Roadmap
