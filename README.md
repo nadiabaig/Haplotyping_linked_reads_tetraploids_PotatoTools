@@ -221,8 +221,8 @@ done
 <!-- ROADMAP -->
 ## 🚧 Roadmap
 
-See the [issues ](https://github.com/smajidian/Hap10/issues?q=is%3Aissue+is%3Aclosed) new and old issues of Hap10.
-See the [issues ](https://github.com/MinzhuXie/H-PoPG/issues) new and old issues of /H-PoPG.
+1. See the [issues ](https://github.com/smajidian/Hap10/issues?q=is%3Aissue+is%3Aclosed) of Hap10.
+2. See the [issues ](https://github.com/MinzhuXie/H-PoPG/issues) of /H-PoPG.
 
 
 
