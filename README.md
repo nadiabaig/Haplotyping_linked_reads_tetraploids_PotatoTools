@@ -83,7 +83,7 @@ p2=/gpfs/--/src/Hap10/utilities
 path=/gpfs/--/Hap10_analysis  #path where I want to save results
 
 bam1=Chr01.bam bam2=Chr02.bam bam3=Chr03.bam 
-vcf1=Chr01.vcf vcf2=Chr02.vcf bam3=Chr03.vcf
+vcf1=Chr01.vcf vcf2=Chr02.vcf vcf3=Chr03.vcf
  
 ##create genotype folders
 mkdir Agria Semlo}
