@@ -6,7 +6,7 @@
 This repository provides the bash script , I used for my 10x datasets to get the haplotype blocks for tetraploid genotypes using Hap++ pipeline in combination with H-PoPG (see the reference for github profile and paper).
 
 
-Main steps of the pipeline inludes:
+@@ Main steps of the pipeline inludes:@@
 * Splitting the vcf file (multi-sample VCF) into per sample per chromosome VCF as the Hap10 pipeline works for 1 chromosome at a time
 * Filtering the VCF by removing homozygous and non-SNP variants in tetraploids
 * Runnng the Hap10 to get the haplotype relevant information
