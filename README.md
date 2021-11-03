@@ -86,7 +86,7 @@ bam1=Chr01.bam bam2=Chr02.bam bam3=Chr03.bam
 vcf1=Chr01.vcf vcf2=Chr02.vcf vcf3=Chr03.vcf
  
 ##create genotype folders
-mkdir Agria Semlo}
+mkdir Agria Semlo
 wait
 
 for x in {Agria, Semlo};
