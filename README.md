@@ -1,19 +1,3 @@
-<br />
-<p align="center">
-  <a href="https://github.com/roshanlam/ReadMeTemplate/">
-    <img src="./logo.png" alt="Logo" width="80" height="80">
-  </a>
-
-  <h3 align="center">Read Me Template</h3>
-
-  <p align="center">
-   Haplotyping_linked_reads_tetraploids_PotatoTools
-    <br />
-    <a href="https://github.com/roshanlam/ReadMeTemplate/"><strong>Explore the docs »</strong></a>
-    <br />
-    <br />
-  </p>
-</p>
 
 <!-- ABOUT THE PROJECT -->
 ## Haplotyping SNP data from linked reads for tetraploids
