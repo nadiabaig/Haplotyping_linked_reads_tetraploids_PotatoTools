@@ -221,7 +221,7 @@ done
 <!-- ROADMAP -->
 ## 🚧 Roadmap
 
-1. See the [issues ](https://github.com/smajidian/Hap10/issues?q=is%3Aissue+is%3Aclosed) of Hap10.
+1. See the [issues, I encountered while doing this analysis for my data.. They are fixed now by the developer](https://github.com/smajidian/Hap10/issues?q=is%3Aissue+is%3Aclosed) of Hap10.
 2. See the [issues ](https://github.com/MinzhuXie/H-PoPG/issues) of /H-PoPG.
 
 
