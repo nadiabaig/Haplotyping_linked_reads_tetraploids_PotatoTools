@@ -78,10 +78,10 @@ done
 cd $PBS_O_WORKDIR
 
 ##Path of tools in the project folder which aren't available on Hpc 
-ext_poly=/gpfs/--/src/extract_poly/build/extractHAIRS
-util=/gpfs/--/src/extract_poly/LinkFragments_brcd_based.py
-p2=/gpfs/--/src/Hap10/utilities
-path=/gpfs/--/Hap10_analysis  #path where I want to save results
+ext_poly="/gpfs/--/src/extract_poly/build/extractHAIRS"
+util="/gpfs/--/src/extract_poly/LinkFragments_brcd_based.py"
+p2="/gpfs/--/src/Hap10/utilities"
+path="/gpfs/--/Hap10_analysis"  #path where I want to save results
 
 bam1=Chr01.bam bam2=Chr02.bam bam3=Chr03.bam 
 vcf1=Chr01.vcf vcf2=Chr02.vcf vcf3=Chr03.vcf
@@ -181,8 +181,8 @@ module load SamTools/1.6
 file=Semlo
 cd /gpfs/--/Hap10_analysis/$file
 p2="/gpfs/project/baign/Final_analysis_array/src/Hap10/utilities"
-javat2=/gpfs/--/src/H-PoPG-master/H-PoPGv0.2.0.jar
-path=/gpfs/--/Hap10_analysis/$file
+javat2="/gpfs/--/src/H-PoPG-master/H-PoPGv0.2.0.jar"
+path="/gpfs/--/Hap10_analysis/$file"
 
 for x in {Chr01,Chr02,Chr03};
 do
