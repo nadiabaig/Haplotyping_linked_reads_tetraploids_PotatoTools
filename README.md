@@ -230,6 +230,7 @@ done
 1. Overall haplotyping for tetraploids is both memory and time intensive task.
 2. It takes roughly 30-40 hours (Hap10's pipeline) on HPC.
 3. Assembly requires more than 80 hrs-- Can't say how much exactly at the moment as the scripts are still in processing on cluster.
+4. SDhap is difficult to install on our hpc.
 
 
 
