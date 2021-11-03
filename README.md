@@ -39,6 +39,10 @@ make
 git clone https://github.com/smajidian/Hap10.git
 cd Hap10
 ```
+3. Download the jar file for haplotype assembly
+```sh
+https://github.com/MinzhuXie/H-PoPG.git
+```
 
 <!-- USAGE EXAMPLES -->
 ## Usage
