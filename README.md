@@ -243,6 +243,7 @@ done
 
 
 # Expected output
+![Alt text](https://github.com/nadiabaig/Haplotyping_linked_reads_tetraploids_PotatoTools/blob/main/phased.png)
 
 # References
 1. https://github.com/smajidian/Hap10
