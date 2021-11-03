@@ -1,8 +1,3 @@
-# Haplotyping_linked_reads_tetraploids_PotatoTools
-
-
-
-
 <br />
 <p align="center">
   <a href="https://github.com/roshanlam/ReadMeTemplate/">
@@ -21,26 +16,19 @@
 </p>
 
 <!-- ABOUT THE PROJECT -->
-## About The Project
+## Haplotyping SNP data from linked reads for tetraploids
+### For QGGP's RIBS meeting only
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+This repository provides the bash script , I used for my 10x datasets to get the haplotype blocks for tetraploid genotypes using Hap++ pipeline in combination with H-PoPG (see the reference for github profile and paper).
 
-There are many great README templates available on GitHub, however, I didn't find one that really suited my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need.
 
-Here's why:
-* Your time should be focused on creating something amazing. A project that solves a problem and helps others
-* You shouldn't be doing the same tasks over and over like creating a README from scratch
-* You should element DRY principles to the rest of your life :smile:
-
-Of course, no one template will serve all projects since your needs may be different. So I'll be adding more in the near future. You may also suggest changes by forking this repo and creating a pull request or opening an issue.
-
-A list of commonly used resources that I find helpful are listed in the acknowledgements.
-
-### Built With
-This section should list any major frameworks that you built your project using. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
-* [Bootstrap](https://getbootstrap.com)
-* [JQuery](https://jquery.com)
-* [Laravel](https://laravel.com)
+Main steps of the pipeline inludes:
+* Splitting the vcf file (multi-sample VCF) into per sample per chromosome VCF as the Hap10 pipeline works for 1 chromosome at a time
+* Filtering the VCF by removing homozygous and non-SNP variants in tetraploids
+* 
+* For Haplotype assembly Hap10 pipeline uses SDhap tool but,it is not easy to install. It may takes few days! 
+It needs dependency ATLAS (Automatically Tuned Linear Algebra Software) libraries and also need lapack. TO INSTALL it on our institutes server it needs disabling CPU throttling. From our institute 'Intel MKL' is available, but you need to bulid it by yourself using module load  "intel/xe2020.4". (Not tried this alterantive-- In case anyone is interested try your luck)..
+* Haplotype assembly using H-PoPG
 
 
 
