@@ -46,6 +46,31 @@ https://github.com/MinzhuXie/H-PoPG.git
 
 <!-- USAGE EXAMPLES -->
 ## Usage
+### VCF splitting and filtering
+```sh
+!/bin/bash
+
+#PBS -l select=1:ncpus=1:mem=5G:arch=skylake
+#PBS -l walltime=50:00:00
+#PBS -A  "your_project"
+
+module load bcftools/1.10.2
+
+cd $PBS_O_WORKDIR
+
+bcftools query -l 07_new_formated.vcf > IDlist.txt  #give you a list of genotypes in your multi-VCF file
+wait
+
+for file in yourvcf.vcf; do  
+  for sample in `bcftools view -h $file | grep "^#CHROM" | cut -f10-`; do
+    bcftools view -c1 -s $sample -o ${file/.vcf*/.$sample.vcf} $file
+  done
+done
+```
+
+
+
+
 
 qsub yourscript_name.sh
 
