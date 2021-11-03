@@ -224,7 +224,11 @@ done
 1. See the [issues, I encountered while doing this analysis for my data.. They are fixed now by the developer](https://github.com/smajidian/Hap10/issues?q=is%3Aissue+is%3Aclosed) of Hap10.
 2. See the [issues ](https://github.com/MinzhuXie/H-PoPG/issues) of /H-PoPG.
 
-## :speaking_head: Roadmap
+## :speaking_head: Note
+1. Overall haplotyping for tetraploids is both memory and time intensive task.
+2. It takes roughly 30-40 hours (Hap10's pipeline) on HPC.
+3. Assembly requires more than 80 hrs-- Can't say how much exactly at the moment as the scripts are still in processing on cluster.
+
 
 
 <!-- CONTACT -->
