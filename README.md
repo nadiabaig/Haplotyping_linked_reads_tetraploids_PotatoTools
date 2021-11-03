@@ -3,7 +3,7 @@
 ## Constructing haplotype blocks for tetraploids using 10x-reads -- PotatoTools
 ### For QGGP's RIBS meeting only
 
-This repository provides the bash script , I used for my 10x datasets to get the haplotype blocks for tetraploid genotypes using Hap++ pipeline in combination with H-PoPG (see the reference for github profile and paper).
+This repository provides the bash script , I used for my 10x datasets to get the haplotype blocks of tetraploid genotypes using Hap++ pipeline in combination with H-PoPG (see the reference for github profile and paper).
 
 ```diff
 @@ Main steps of the pipeline inludes: @@ 
@@ -224,6 +224,7 @@ done
 1. See the [issues, I encountered while doing this analysis for my data.. They are fixed now by the developer](https://github.com/smajidian/Hap10/issues?q=is%3Aissue+is%3Aclosed) of Hap10.
 2. See the [issues ](https://github.com/MinzhuXie/H-PoPG/issues) of /H-PoPG.
 
+## :speaking_head: Roadmap
 
 
 <!-- CONTACT -->
