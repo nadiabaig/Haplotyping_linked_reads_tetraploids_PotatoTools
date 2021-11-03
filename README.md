@@ -241,6 +241,9 @@ done
 
 <!--Project Link: [https://github.com/your_username/repo_name](https://github.com/your_username/repo_name) -->
 
+
+# Expected output
+
 # References
 1. https://github.com/smajidian/Hap10
 2. Majidian, S., Kahaei, M.H. & de Ridder, D. Hap10: reconstructing accurate and long polyploid haplotypes using linked reads. BMC Bioinformatics 21, 253 (2020). https://doi.org/10.1186/s12859-020-03584-5
