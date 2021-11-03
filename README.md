@@ -3,16 +3,18 @@
 ## Constructing haplotype blocks for tetraploids using 10x-reads -- PotatoTools
 ### For QGGP's RIBS meeting only
 
-This repository provides the bash script , I used for my 10x datasets to get the haplotype blocks of tetraploid genotypes using Hap++ pipeline in combination with H-PoPG (see the reference for github profile and paper).
+This repository provides the bash script. I used for my 10x datasets to get the haplotype blocks of tetraploid genotypes using the Hap++ pipeline in combination with H-PoPG (see the reference for GitHub profile and paper).
 
 ```diff
 @@ Main steps of the pipeline inludes: @@ 
 ```
-* Splitting the vcf file (multi-sample VCF) into per sample per chromosome VCF as the Hap10 pipeline works for 1 chromosome at a time
+* Splitting the vcf file (multi-sample VCF) into per sample per chromosome VCF as the Hap10 pipeline works for one chromosome at a time
 * Filtering the VCF by removing homozygous and non-SNP variants in tetraploids
 * Runnng the Hap10 to get the haplotype relevant information
 * Haplotype assembly using H-PoPG: For Haplotype assembly Hap10 pipeline uses SDhap tool but,it is not easy to install. 
+
   -  (&#x1F534;)  It may takes few days!
+  
 ```diff
 + It needs dependency ATLAS (Automatically Tuned Linear Algebra Software) libraries and also need lapack. 
 - TO INSTALL it on our institutes server it needs disabling CPU throttling. 
