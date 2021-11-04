@@ -209,7 +209,7 @@ wait
 sort -V list.txt > out.txt
 wait
 
-java -jar $javat2 -p 4 -v $path/${x}.vcf -b $path/${x}.bam -f out.txt  -d phased_${x}_cc_allins_haps.txt
+java -xmx64g -jar $javat2 -p 4 -v $path/${x}.vcf -b $path/${x}.bam -f out.txt  -d phased_${x}_cc_allins_haps.txt
 " > /gpfs/--/Hap10_analysis/$file/assembly.${x}.sh
 
 cd /gpfs/--Hap10_analysis/$file
